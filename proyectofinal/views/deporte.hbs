@@ -1,0 +1,27 @@
+ <div class="container sm:mx-16 md:mx-28 lg:mx-8">
+
+  <div class="grid xl:grid-cols-3 md:grid-cols-2 gap-3 align-center mx-auto my-16 cursor-default lg:p-8 md:mx-2 lg:mx-4">
+ 
+ {{#each obtenerdeporte}}   
+
+ <div class="cmax-w-sm overflow-hidden shadow-lg mx-2 my-8 hover:scale-110 hover:bg-slate-200 text-black font-semibold py-3 px-6 rounded-md transition duration-500 ease-in-out transform hover:-translate-y-1">
+
+    <div class="w-full rounded text-justify ">
+        <img class="w-full" src="{{Imagen}}">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-center">{{Nombre}}</div>
+            <p class="text-gray-600 text-base"> {{Descripcion}} </p>
+        </div>
+
+        <div class="py-4">
+
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#hazdeporte</span>
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#siemprefit</span>
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600">#cuidate</span>
+
+        </div>
+    </div>  
+      
+</div>
+{{/each}} 
+</div>

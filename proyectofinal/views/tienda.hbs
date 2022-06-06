@@ -1,0 +1,27 @@
+<div class="container xl:mx lg:mx-auto">
+
+  <div class="grid xl:grid-cols-3 md:grid-cols-2 gap-3 align-center mx-auto my-16 cursor-default lg:p-8 md:mx-2 lg:mx-4  ">
+
+  {{#each obtenertienda}}  
+
+      <div class="max-w-sm w-full overflow-hidden shadow-lg mx-2 my-8 hover:scale-110 hover:bg-slate-200 text-black font-semibold py-3 px-6 rounded-md transition duration-500 ease-in-out transform hover:-translate-y-1">
+
+        <img class="w-full" src="{{Imagen}}" >
+
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-center">{{Nombre}}</div>
+          <p class="text-gray-600 text-base text-justify">{{Descripcion}}</p>
+        </div>
+
+        <div class="py-4">
+
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#mantentesano</span>
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 mr-2">#cuidate</span>
+          <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600">#comebien</span>
+
+        </div>
+        <a href="https://www.dosfarma.com/" class="underline text-xs">Compra tus productos aquí</a>
+
+      </div>
+  {{/each}}
+</div>

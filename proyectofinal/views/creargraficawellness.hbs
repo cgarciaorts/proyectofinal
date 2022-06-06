@@ -1,0 +1,103 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+<script src="https://unpkg.com/just-handlebars-helpers@1.0.19/dist/h.min.js"></script>
+<script type="text/javascript">
+  H.registerHelpers(Handlebars);
+</script>
+     
+<div class="grid xl:grid-cols-3 md:grid-cols-2 gap-3 align-center mx-auto my-16 cursor-default sm:mx-20 lg:p-8 md:mx-2 lg:mx-4 ">
+{{#each obtenergraficaswellness}}
+
+    <div class="max-w-sm w-full overflow-hidden shadow-lg mx-2 my-8 hover:scale-110 hover:bg-slate-200 text-black font-semibold py-3 px-6 rounded-md transition duration-500 ease-in-out transform hover:-translate-y-1">
+
+            <h1 class="text-center font-bold">Mis datos</h1>
+            <h1>Pesas: {{Peso}} kg</h1> 
+            <h1>Tienes: {{Edad}} años </h1>
+            <h1>Has dormido: {{Horas}} h</h1> 
+            <h1>Calidad del sueño: {{Calidad}} </h1> 
+            <h1>Cansancio: {{Cansancio}}</h1>
+            <h1>Estrés: {{Estres}}</h1>
+            <h1>Tiempo de ejercicio: {{Ejercicio}} </h1> 
+            <h1>Dia de la semana: {{Fecha}} </h1>         
+
+            <div class="flex my-6 justify-center">
+                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a href="/editargraficawellness/{{_id}}"> Actualizar</a></button>
+
+                <form action="/eliminargraficawellness/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Eliminar</button>            
+                </form>                 
+            </div>
+           
+    </div>    
+{{/each}}
+
+
+</div>
+
+<div class="bg-white border rounded shadow">
+
+    <div class="border-b p-3">
+        <h2 class="font-bold uppercase text-gray-600 text-center text-xl">Tus datos</h2>
+    </div>
+
+    
+    <div class="p-5 mx-16">
+
+        <canvas id="chartjs" class="chartjs" width="50" height="20"></canvas>
+
+        <script>
+
+            new Chart(document.getElementById("chartjs"), {
+                "type": "bar",            
+
+                "data":{
+                    "labels": [{{#each obtenergraficaswellness}}"{{Fecha}}", {{/each}}]
+                    ,
+                    "datasets": [
+                    
+                    
+                    {
+                        "label": "Peso",
+                        "type": "line",
+                        "data": [{{#each obtenergraficaswellness}}{{Peso}}, {{/each}}],
+                        "backgroundColor": "rgba(0,0,0,0)"
+                        
+                    },{
+                        "label": "Estres",
+                        "data": [{{#each obtenergraficaswellness}}{{Estres}}, {{/each}}],
+                        "backgroundColor": "rgba(0, 31, 255, 0.4)"
+                    },{
+                        "label": "Cansancio",
+                        "data": [{{#each obtenergraficaswellness}}{{Cansancio}}, {{/each}}],
+                        "backgroundColor": "rgba(0, 31, 255, 0.4)"                  
+                    },{
+                        "label": "Calidad del sueño",
+                        "data": [{{#each obtenergraficaswellness}}{{Calidad}}, {{/each}}],
+                        "backgroundColor": "rgba(0, 31, 255, 0.4)"                  
+                    },{
+                        "label": "Horas de sueño",
+                        "data": [{{#each obtenergraficaswellness}}{{Horas}}, {{/each}}],
+                        "backgroundColor": "rgba(0, 31, 255, 0.4)"                  
+                    },{
+                        "label": "Ejercicio",
+                        "data": [{{#each obtenergraficaswellness}}{{Ejercicio}}, {{/each}}],
+                        "backgroundColor": "rgba(0, 31, 255, 0.4)"                  
+                    }
+                    ]
+                },
+                "options": {
+                    "scales": {
+                        "yAxes": [{
+                            "ticks": {
+                                "beginAtZero": true
+                            }
+                        }]
+                    }
+                }
+            });    
+        </script>
+
+    </div>    
+
+</div>   
